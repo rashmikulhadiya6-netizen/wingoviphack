@@ -1,0 +1,22 @@
+name: 24h Prediction Bot
+
+on:
+  schedule:
+    - cron: '*/5 * * * *' # Yeh har 5 minute mein automatic chalega
+  workflow_dispatch: # Isse aap manually bhi start kar sakte hain
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Run Engine
+        run: node engine.js
+        
